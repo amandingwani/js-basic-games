@@ -170,6 +170,11 @@ function startApp() {
     }
 
     function resetGame() {
+        // stop the current game, if running
+        if (running) {
+            clearInterval(gameTimerId);
+        }
+
         score = 0;
         xVel = 1;
         yVel = 0;
