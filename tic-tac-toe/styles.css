@@ -1,0 +1,51 @@
+#canvas {
+    text-align: center;
+    font-family: "Permanent Marker", cursive;
+}
+
+#heading {
+    font-size: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+#status {
+    font-size: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+#restartButton {
+    background-color: #faf7fa;
+    border-color: black;
+    border-radius: 12px;
+    border-width: 1px;
+    font-size: 25px;
+    color: black;
+    padding: 5px;
+    /* padding-left: 50px;
+    padding-right: 50px; */
+    left: 50%;
+    cursor: pointer;
+    margin: 5px;
+    width: 150px;
+}
+
+.cell {
+    width: 75px;
+    height: 75px;
+    border: 2px solid;
+    box-shadow: 0 0 0 2px;
+    line-height: 75px;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+#cellContainer {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    width: 225px;
+    margin: auto;
+}

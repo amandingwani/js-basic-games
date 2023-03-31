@@ -1,0 +1,40 @@
+#watchBox {
+    background-color: #d4d2d4;
+    border-radius: 30px;
+    border: 2px solid black;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.labels {
+    font-size: 40px;
+    font-family: consolas, monospace;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+#player {
+    color: blue;
+}
+
+#computer {
+    color: red;
+}
+
+.Button {
+    background-color: #faf7fa;
+    border-color: black;
+    border-radius: 12px;
+    border-width: 1px;
+    font-size: 25px;
+    font-family: consolas, monospace;
+    color: black;
+    padding: 5px;
+    /* padding-left: 50px;
+    padding-right: 50px; */
+    left: 50%;
+    cursor: pointer;
+    margin: 5px;
+    width: 150px;
+}
