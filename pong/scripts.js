@@ -40,8 +40,8 @@ function startApp() {
     let ballBaseVel = 3;
     let ballVelAdder = 0.0003 * gameTickTimeInterval;
 
-    p1 = new Player(document.getElementById('p1Score'), 0, 'skyblue', 0, gameHeight / 2 - 50, 0, 25, 100);
-    p2 = new Player(document.getElementById('p2Score'), 0, 'red', gameWidth-25, gameHeight / 2 - 50, 0, 25, 100);
+    let p1 = new Player(document.getElementById('p1Score'), 0, 'skyblue', 0, gameHeight / 2 - 50, 0, 25, 100);
+    let p2 = new Player(document.getElementById('p2Score'), 0, 'red', gameWidth-25, gameHeight / 2 - 50, 0, 25, 100);
     
     let pBaseVel = 10;
     let running = false;
@@ -102,13 +102,11 @@ function startApp() {
     }
 
     function renderBall() {
-        // ctx.arc(ballX,ballY, ballRadius, 0, 2 * Math.PI);
-        // ctx.fillStyle = ballColor
-        // ctx.fill();
-        // ctx.stroke();
-
-        ctx.fillStyle = ballColor;
-        ctx.fillRect(ballX,ballY, 10, 10);
+        ctx.fillStyle = ballColor
+        ctx.beginPath();
+        ctx.arc(ballX,ballY, ballRadius, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.fill();
     }
 
     function renderPlayer(p) {
@@ -133,11 +131,15 @@ function startApp() {
         if (ballX - ballRadius < p1.width && ballY + ballRadius > p1.y && ballY - ballRadius< p1.y + p1.height) {
             // bounce to right
             ballXVel = -ballXVel;
+            // fix stuck behavior
+            ballX = p1.width + ballRadius;
         }
         //p2 hit check
         else if (ballX + ballRadius > gameWidth - p2.width && ballY + ballRadius > p2.y && ballY - ballRadius< p2.y + p2.height) {
             // bounce to right
             ballXVel = -ballXVel;
+            // fix stuck behavior
+            ballX = gameWidth - p2.width - ballRadius;
         }
 
         // left and right score 
@@ -219,21 +221,13 @@ function startApp() {
     }
 
     function resetGame() {
-        // // stop the current game, if running
-        // if (running) {
-        //     clearInterval(gameTimerId);
-        // }
+        // stop the current game, if running
+        if (running) {
+            clearInterval(gameTimerId);
+        }
 
-        // score = 0;
-        // xVel = 1;
-        // yVel = 0;
-        // snake = [
-        //     {x:4, y:0},
-        //     {x:3, y:0},
-        //     {x:2, y:0},
-        //     {x:1, y:0},
-        //     {x:0, y:0}
-        // ];
-        // gameStart();
+        p1 = new Player(document.getElementById('p1Score'), 0, 'skyblue', 0, gameHeight / 2 - 50, 0, 25, 100);
+        p2 = new Player(document.getElementById('p2Score'), 0, 'red', gameWidth-25, gameHeight / 2 - 50, 0, 25, 100);
+        gameStart();
     }
 }
